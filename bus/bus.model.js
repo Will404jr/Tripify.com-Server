@@ -13,6 +13,16 @@ const BusSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  courrierPrice: {
+    type: Number,
+    required: true,
+  },
+  schedules: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
   stations: [
     {
       stationName: {

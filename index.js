@@ -3,8 +3,11 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const registerRouter = require("./auth/routers/register.router");
 const loginRouter = require("./auth/routers/login.router");
-const busRouter = require("./bus/bus.router");
+const busRouter = require("./bus/routers/bus.router");
 const imagesRouter = require("./busImages/routers/images.router");
+const displayBusRouter = require("./bus/routers/displayBus.router");
+const displayImageRouter = require("./busImages/routers/displayImages.router");
+const lostRouter = require("./lostAndFound/routers/lost.router");
 
 const app = express();
 
@@ -30,8 +33,12 @@ app.use(registerRouter);
 app.use(loginRouter);
 
 app.use(busRouter);
+app.use(displayBusRouter);
 
 app.use(imagesRouter);
+app.use(displayImageRouter);
+
+app.use(lostRouter);
 
 app.listen(5000, (req, res) => {
   console.log("Server running on port 5000");

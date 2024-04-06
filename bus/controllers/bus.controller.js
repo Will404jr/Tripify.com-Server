@@ -1,14 +1,24 @@
-const Bus = require("./bus.model");
+const Bus = require("../bus.model");
 
 async function register(req, res) {
   try {
-    const { company, manager, contact, stations, images } = req.body;
+    const {
+      company,
+      manager,
+      contact,
+      courrierPrice,
+      schedules,
+      stations,
+      images,
+    } = req.body;
 
     // Create a new bus instance
     const newBus = new Bus({
       company: company,
       manager: manager,
       contact: contact,
+      courrierPrice: courrierPrice,
+      schedules: schedules,
       stations: stations,
       images: images,
     });
