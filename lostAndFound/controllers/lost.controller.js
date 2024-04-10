@@ -1,22 +1,22 @@
 const Lost = require("../lost.model");
 
 // Controller function to create a new lost item
-exports.createLostItem = async (req, res) => {
+exports.create = async (req, res) => {
   try {
     const { description, station, contact, images } = req.body;
     const newLostItem = new Lost({
-      description: description,
-      station: station,
-      contact: contact,
-      images: images,
+      description,
+      station,
+      contact,
+      images, // Parse images array from JSON string
     });
-    const savedLostItem = await newLostItem.save();
-    res.status(201).json(savedLostItem);
+
+    const savedLostItem = await newLostItem.save(); // Save the new lost item to the database
+    res.status(201).send(savedLostItem);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).send({ message: "Error creating new lost item", error });
   }
 };
-
 // Controller function to retrieve all lost items
 exports.getAllLostItems = async (req, res) => {
   try {

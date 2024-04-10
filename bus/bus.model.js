@@ -17,6 +17,11 @@ const BusSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  images: [
+    {
+      type: String,
+    },
+  ],
   schedules: [
     {
       type: String,

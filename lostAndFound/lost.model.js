@@ -1,27 +1,25 @@
 const mongoose = require("mongoose");
 
-const LostSchema = new mongoose.Schema({
+const lostSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
-    unique: true,
   },
   station: {
     type: String,
     required: true,
-    unique: true,
   },
   contact: {
     type: String,
     required: true,
-    unique: true,
   },
-  images: {
-    type: [String], // Array of image URLs
-    required: true,
-  },
+  images: [
+    {
+      type: String,
+    },
+  ],
 });
 
-const Lost = mongoose.model("Lost", LostSchema);
+const Lost = mongoose.model("Lost", lostSchema);
 
 module.exports = Lost;

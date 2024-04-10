@@ -8,11 +8,24 @@ const imagesRouter = require("./busImages/routers/images.router");
 const displayBusRouter = require("./bus/routers/displayBus.router");
 const displayImageRouter = require("./busImages/routers/displayImages.router");
 const lostRouter = require("./lostAndFound/routers/lost.router");
+const packageRouter = require("./packages/routers/packages.router");
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json({ limit: "10mb" })); // Increased body size limit to 10mb
 app.use(cors());
+
+// Logging middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
 
 app.get("/api", (req, res) => {
   res.json({
@@ -40,6 +53,8 @@ app.use(displayImageRouter);
 
 app.use(lostRouter);
 
-app.listen(5000, (req, res) => {
+app.use(packageRouter);
+
+app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
