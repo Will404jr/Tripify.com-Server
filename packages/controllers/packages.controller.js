@@ -1,9 +1,24 @@
 const Package = require("../packages.model");
 
+// Function to generate a random booking ID with no more than 4 characters
+function generatePackageID() {
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let packageID = "";
+  for (let i = 0; i < 4; i++) {
+    packageID += characters.charAt(
+      Math.floor(Math.random() * characters.length)
+    );
+  }
+  return packageID;
+}
+
 // Create a new package
 const createPackage = async (req, res) => {
   try {
-    const newPackage = new Package(req.body);
+    const newPackage = new Package({
+      ...req.body,
+      packageID: generatePackageID(), // Generate a unique package ID
+    });
     await newPackage.save();
     res.status(201).json(newPackage);
   } catch (error) {

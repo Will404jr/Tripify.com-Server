@@ -1,25 +1,17 @@
 const mongoose = require("mongoose");
 
-const PackageSchema = new mongoose.Schema({
-  packageID: {
+const BookingSchema = new mongoose.Schema({
+  bookingID: {
     type: String,
-    unique: true,
     required: true,
+    unique: true,
   },
   fullNames: {
     type: String,
     required: true,
   },
   tellNumber: {
-    type: Number,
-    required: true,
-  },
-  recipientsNames: {
-    type: String,
-    required: true,
-  },
-  recipientsNumber: {
-    type: Number,
+    type: String, // Assuming phone numbers are stored as strings
     required: true,
   },
   destination: {
@@ -30,7 +22,7 @@ const PackageSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  shippingDate: {
+  selectedDate: {
     type: Date,
     required: true,
   },
@@ -38,8 +30,12 @@ const PackageSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  selectedSeat: {
+    type: String,
+    required: false,
+  },
 });
 
-const Package = mongoose.model("Package", PackageSchema);
+const Booking = mongoose.model("Booking", BookingSchema);
 
-module.exports = Package;
+module.exports = Booking;

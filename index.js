@@ -9,6 +9,7 @@ const displayBusRouter = require("./bus/routers/displayBus.router");
 const displayImageRouter = require("./busImages/routers/displayImages.router");
 const lostRouter = require("./lostAndFound/routers/lost.router");
 const packageRouter = require("./packages/routers/packages.router");
+const bookingsRouter = require("./bookings/routers/bookings.router");
 
 const app = express();
 
@@ -52,6 +53,8 @@ app.use(imagesRouter);
 app.use(displayImageRouter);
 
 app.use(lostRouter);
+
+app.use(bookingsRouter);
 
 app.use(packageRouter);
 
