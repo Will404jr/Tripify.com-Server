@@ -10,6 +10,10 @@ const AuthSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  accountType: {
+    type: String,
+    required: true, // Default account type is "user"
+  },
 });
 
 const collection = new mongoose.model("Auth", AuthSchema);
