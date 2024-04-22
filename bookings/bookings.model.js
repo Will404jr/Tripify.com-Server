@@ -10,6 +10,10 @@ const BookingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
   tellNumber: {
     type: String, // Assuming phone numbers are stored as strings
     required: true,
@@ -19,6 +23,10 @@ const BookingSchema = new mongoose.Schema({
     required: true,
   },
   chosenBus: {
+    type: String,
+    required: true,
+  },
+  station: {
     type: String,
     required: true,
   },
@@ -32,7 +40,7 @@ const BookingSchema = new mongoose.Schema({
   },
   selectedSeat: {
     type: String,
-    required: false,
+    required: true,
   },
 });
 

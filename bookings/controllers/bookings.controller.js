@@ -1,38 +1,30 @@
 const Booking = require("../bookings.model");
 
-// Function to generate a random booking ID with no more than 4 characters
-function generateBookingID() {
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  let bookingID = "";
-  for (let i = 0; i < 4; i++) {
-    bookingID += characters.charAt(
-      Math.floor(Math.random() * characters.length)
-    );
-  }
-  return bookingID;
-}
-
 // Controller methods
 const bookingController = {
   // Create a new booking
   createBooking: async (req, res) => {
     try {
       const {
+        bookingID,
         fullNames,
+        email,
         tellNumber,
         destination,
         chosenBus,
+        station,
         selectedDate,
         shippingTime,
         selectedSeat,
       } = req.body;
-      const bookingID = generateBookingID();
       const newBooking = new Booking({
         bookingID,
         fullNames,
+        email,
         tellNumber,
         destination,
         chosenBus,
+        station,
         selectedDate,
         shippingTime,
         selectedSeat,
@@ -73,9 +65,11 @@ const bookingController = {
     try {
       const {
         fullNames,
+        email,
         tellNumber,
         destination,
         chosenBus,
+        station,
         selectedDate,
         shippingTime,
         selectedSeat,
@@ -83,9 +77,11 @@ const bookingController = {
       const booking = await Booking.findById(req.params.id);
       if (booking) {
         booking.fullNames = fullNames;
+        booking.email = email;
         booking.tellNumber = tellNumber;
         booking.destination = destination;
         booking.chosenBus = chosenBus;
+        booking.station = station;
         booking.selectedDate = selectedDate;
         booking.shippingTime = shippingTime;
         booking.selectedSeat = selectedSeat;

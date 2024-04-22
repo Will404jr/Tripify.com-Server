@@ -54,7 +54,33 @@ async function getAllAccounts(req, res) {
   }
 }
 
+async function changePassword(req, res) {
+  try {
+    const { email, newPassword } = req.body;
+
+    // Check if the user exists
+    const existingUser = await collection.findOne({ email: email });
+
+    if (!existingUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Hash the new password
+    const hashedPassword = await bcrypt.hash(newPassword, 10); // 10 is the saltRounds
+
+    // Update the user's password
+    existingUser.password = hashedPassword;
+    await existingUser.save();
+
+    res.status(200).json({ message: "Password updated successfully" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ message: error.message });
+  }
+}
+
 module.exports = {
   register,
   getAllAccounts,
+  changePassword,
 };

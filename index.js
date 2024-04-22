@@ -11,6 +11,8 @@ const lostRouter = require("./lostAndFound/routers/lost.router");
 const packageRouter = require("./packages/routers/packages.router");
 const bookingsRouter = require("./bookings/routers/bookings.router");
 const adminEmailRouter = require("./adminEmail/mail.router");
+const packageMailRouter = require("./packageEmail/mail.router");
+const bookingMailRouter = require("./bookingEmail/mail.router");
 
 const app = express();
 
@@ -60,6 +62,10 @@ app.use(bookingsRouter);
 app.use(packageRouter);
 
 app.use(adminEmailRouter);
+
+app.use(packageMailRouter);
+
+app.use(bookingMailRouter);
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
