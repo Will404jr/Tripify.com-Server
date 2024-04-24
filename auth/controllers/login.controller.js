@@ -27,8 +27,8 @@ async function getAlllogins(req, res) {
       { expiresIn: "1h" }
     );
 
-    // Return the JWT token
-    res.status(200).json({ token });
+    // Return the JWT token and matched user details
+    res.status(200).json({ token, user });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
