@@ -13,6 +13,7 @@ const bookingsRouter = require("./bookings/routers/bookings.router");
 const adminEmailRouter = require("./adminEmail/mail.router");
 const packageMailRouter = require("./packageEmail/mail.router");
 const bookingMailRouter = require("./bookingEmail/mail.router");
+const otpRouter = require("./OTP/otp.router");
 
 const app = express();
 
@@ -66,6 +67,8 @@ app.use(adminEmailRouter);
 app.use(packageMailRouter);
 
 app.use(bookingMailRouter);
+
+app.use(otpRouter);
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");

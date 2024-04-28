@@ -4,7 +4,7 @@ const collection = require("../auth.model");
 
 async function register(req, res) {
   try {
-    const { email, password, accountType } = req.body;
+    const { email, password, accountType, company } = req.body;
 
     // Check if the email already exists
     const existingUser = await collection.findOne({ email: email });
@@ -24,6 +24,7 @@ async function register(req, res) {
       email: email,
       password: hashedPassword,
       accountType: finalAccountType,
+      company: company,
     });
 
     // Save the new user to the database
