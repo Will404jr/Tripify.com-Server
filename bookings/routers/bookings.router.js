@@ -17,4 +17,10 @@ bookingsRouter.put("/api/bookings/:id", bookingController.updateBooking);
 // Delete a booking by ID
 bookingsRouter.delete("/api/bookings/:id", bookingController.deleteBooking);
 
+// Update cleared status of a booking by ID
+bookingsRouter.patch(
+  "/api/bookings/:id/clear",
+  bookingController.updateClearedStatus
+);
+
 module.exports = bookingsRouter;

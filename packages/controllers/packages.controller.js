@@ -66,10 +66,28 @@ const deletePackageById = async (req, res) => {
   }
 };
 
+const updateClearedStatus = async (id) => {
+  try {
+    const package = await Package.findByIdAndUpdate(
+      id,
+      { cleared: true },
+      { new: true }
+    );
+    if (!package) {
+      throw new Error(`Package with ID ${id} not found`);
+    }
+    return package;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Export the functions as methods on an object
 module.exports = {
   createPackage,
   getAllPackages,
   getPackageById,
   updatePackageById,
   deletePackageById,
+  updateClearedStatus,
 };

@@ -42,6 +42,10 @@ const BookingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  cleared: {
+    type: Boolean,
+    default: false, // Set default value to false
+  },
 });
 
 const Booking = mongoose.model("Booking", BookingSchema);

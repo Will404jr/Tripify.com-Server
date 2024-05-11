@@ -3,10 +3,10 @@ const Lost = require("../lost.model");
 // Controller function to create a new lost item
 exports.create = async (req, res) => {
   try {
-    const { description, station, contact, images } = req.body;
+    const { description, company, contact, images } = req.body;
     const newLostItem = new Lost({
       description,
-      station,
+      company,
       contact,
       images, // Parse images array from JSON string
     });

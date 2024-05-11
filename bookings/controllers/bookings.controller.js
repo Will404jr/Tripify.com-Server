@@ -109,6 +109,33 @@ const bookingController = {
       res.status(500).json({ message: err.message });
     }
   },
+
+  // Update cleared status by ID
+  updateClearedStatus: async (req, res) => {
+    try {
+      const id = req.params.id;
+      const updatedBooking = await updateClearedStatus(id);
+      res.json(updatedBooking);
+    } catch (error) {
+      res.status(404).json({ message: error.message });
+    }
+  },
+};
+
+const updateClearedStatus = async (id) => {
+  try {
+    const booking = await Booking.findByIdAndUpdate(
+      id,
+      { cleared: true },
+      { new: true }
+    );
+    if (!booking) {
+      throw new Error(`Booking with ID ${id} not found`);
+    }
+    return booking;
+  } catch (error) {
+    throw error;
+  }
 };
 
 module.exports = bookingController;

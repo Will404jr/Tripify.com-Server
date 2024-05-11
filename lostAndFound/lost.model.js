@@ -5,7 +5,7 @@ const lostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  station: {
+  company: {
     type: String,
     required: true,
   },

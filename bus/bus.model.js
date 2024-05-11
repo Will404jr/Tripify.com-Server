@@ -25,7 +25,6 @@ const BusSchema = new mongoose.Schema({
   schedules: [
     {
       type: String,
-      required: true,
     },
   ],
   stations: [

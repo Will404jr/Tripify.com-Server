@@ -42,6 +42,10 @@ const PackageSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  cleared: {
+    type: Boolean,
+    default: false, // Set default value to false
+  },
 });
 
 const Package = mongoose.model("Package", PackageSchema);
