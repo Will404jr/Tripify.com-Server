@@ -34,6 +34,10 @@ const PackageSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  station: {
+    type: String,
+    required: true,
+  },
   shippingDate: {
     type: Date,
     required: true,

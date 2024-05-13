@@ -16,6 +16,7 @@ const bookingMailRouter = require("./bookingEmail/mail.router");
 const otpRouter = require("./OTP/otp.router");
 const bookingClearanceRouter = require("./bookingClearance/bookingClearance.router");
 const packageClearanceRouter = require("./packageClearance/packageClearance.router");
+const editBusRouter = require("./bus/routers/editbus.router");
 
 const app = express();
 
@@ -57,6 +58,7 @@ app.use(displayBusRouter);
 
 app.use(imagesRouter);
 app.use(displayImageRouter);
+app.use(editBusRouter);
 
 app.use(lostRouter);
 
