@@ -42,7 +42,9 @@ app.get("/api", (req, res) => {
 });
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/Authentication")
+  .connect(
+    "mongodb+srv://Junior:test01@cluster0.46lb860.mongodb.net/Tripify?retryWrites=true&w=majority"
+  )
   .then(() => {
     console.log("Database connected");
   })
